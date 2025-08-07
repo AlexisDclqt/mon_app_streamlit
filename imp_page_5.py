@@ -32,8 +32,10 @@ df_with_reserve = data[(data['TYPE'] == 'Réserve') & (data['CODPRO'])]
 df_without_reserve = data[(data['TYPE'] != 'Réserve') & (data['CODPRO'])]
 
 df_codblo = data.groupby(['ZONSTS', 'ALLSTS', 'CODBLO','AXE_PRODUIT']).size().reset_index(name="Nombre d'emplacements").sort_values(by="Nombre d'emplacements", ascending=False)
-df_axe = data.groupby('AXE_PRODUIT').size().reset_index(name="Nombre d'emplacements").sort_values(by="Nombre d'emplacements", ascending=False)
-df_axe_r = df_with_reserve.groupby('AXE_PRODUIT').size().reset_index(name="Nombre d'emplacements").sort_values(by="Nombre d'emplacements", ascending=False)
+df_axe = df_without_reserve.groupby('AXE_PRODUIT')['CODPRO'].nunique().reset_index(name="Nombre d'emplacements").sort_values(by="Nombre d'emplacements", ascending=False)
+# df_axe = data.groupby('AXE_PRODUIT').size().reset_index(name="Nombre d'emplacements").sort_values(by="Nombre d'emplacements", ascending=False)
+df_axe_r = df_with_reserve.groupby('AXE_PRODUIT')['CODPRO'].nunique().reset_index(name="Nombre d'emplacements").sort_values(by="Nombre d'emplacements", ascending=False)
+# df_axe_r = df_with_reserve.groupby('AXE_PRODUIT').size().reset_index(name="Nombre d'emplacements").sort_values(by="Nombre d'emplacements", ascending=False)
 df_FP = data[(data['CODBLO'] == 'FP') & (data['TYPE'] != 'Réserve')]
 df_FP = df_FP.groupby(['ALLSTS']).size().reset_index(name = "Nombre d'emplacements FP").sort_values(by = "ALLSTS", ascending = False)
 
@@ -119,5 +121,6 @@ st.sidebar.metric(label="Nombre codpro", value= f'{nb} articles')
     
     
     
+
 
 
