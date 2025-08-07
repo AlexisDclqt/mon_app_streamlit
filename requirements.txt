@@ -1,5 +1,5 @@
-streamlit
+streamlit==1.36.0
 pandas
 plotly
-streamlit-multipage
 seaborn
+
