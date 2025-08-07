@@ -72,8 +72,8 @@ if show_table:
     allsts_input = st.session_state.get("allMarque", "")
     filtre_parite = st.session_state.get("CB5", "")
 
-    zonsts_input = st.selectbox("Choisir une Zone :", sorted(data['ZONSTS'].unique()), key = 'zoneMarque')
-    allsts_input = st.selectbox("Choisir une Allée :", sorted(data['ALLSTS'].unique()), key = 'allMarque')
+    zonsts_input = st.selectbox("Choisir une Zone :", (data['ZONSTS'].unique()), key = 'zoneMarque')
+    allsts_input = st.selectbox("Choisir une Allée :", (data['ALLSTS'].unique()), key = 'allMarque')
 
     sous_df = data[(data['ZONSTS'] == zonsts_input) & (data['ALLSTS'] == allsts_input)]
     dplsts_all = sorted(pd.to_numeric(sous_df['DPLSTS'], errors='coerce').dropna().astype(int).unique()) 
@@ -176,4 +176,5 @@ if show_table:
 
 else:
     st.info("✅ Grille masquée. Cochez la case dans la sidebar pour l'afficher.")
+
 
