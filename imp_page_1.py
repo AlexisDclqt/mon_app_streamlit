@@ -4,7 +4,7 @@ from difflib import get_close_matches
 
 
 
-DATA = r"C:\Users\adecloquement\Desktop\VAE\Certif et revision\Projet_ST\imp\imp.xlsx"
+DATA = "imp.xlsx"
 
 
 @st.cache_data(persist=True)
@@ -121,5 +121,6 @@ if lettre_marque and axe_choisi:
                     st.error(f"🚫 Aucun emplacement FP disponible dans l'axe '{axe_choisi}'")
                     
 st.markdown("----------------------------------------------------------------------------------------------------------")
+
 
 
