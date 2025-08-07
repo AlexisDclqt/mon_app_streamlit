@@ -68,7 +68,7 @@ if show_table:
 
     st.title("📊 Affichage des Marques par allées (vue implantation par allée)")
     
-    zonsts_input = st.session_state.get("zoneMarque", "")
+    zonsts_input = st.session_state.get("zoneMarque", [])
     allsts_input = st.session_state.get("allMarque", "")
     filtre_parite = st.session_state.get("CB5", "")
 
@@ -176,5 +176,6 @@ if show_table:
 
 else:
     st.info("✅ Grille masquée. Cochez la case dans la sidebar pour l'afficher.")
+
 
 
