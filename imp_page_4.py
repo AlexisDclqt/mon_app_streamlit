@@ -5,7 +5,7 @@ import seaborn as sns
 
 
 
-DATA = r"C:\Users\adecloquement\Desktop\VAE\Certif et revision\Projet_ST\imp\imp.xlsx"
+DATA = "imp.xlsx"
 
 
 @st.cache_data(persist=True)
@@ -134,3 +134,4 @@ else:
 
 
 #  graph pour les axes dans la répartition par marque si réserrve
+
