@@ -73,8 +73,8 @@ if show_table1:
     allsts_input1 = st.session_state.get("allABC","")
     filtre_parite1 = st.session_state.get("filtre_abc","")
 
-    zonsts_input1 = st.selectbox("Choisir Zone (ABC):", sorted(data['ZONSTS'].unique()), key = 'zoneABC')
-    allsts_input1 = st.selectbox("Choisir une Allée (ABC):", sorted(data['ALLSTS'].unique()), key = 'allABC')
+    zonsts_input1 = st.selectbox("Choisir Zone (ABC):", (data['ZONSTS'].unique()), key = 'zoneABC')
+    allsts_input1 = st.selectbox("Choisir une Allée (ABC):", (data['ALLSTS'].unique()), key = 'allABC')
 
     sous_df1 = data[(data['ZONSTS'] == zonsts_input1) & (data['ALLSTS'] == allsts_input1)]
     dplsts_all1 = sorted(pd.to_numeric(sous_df1['DPLSTS'], errors='coerce').dropna().astype(int).unique()) 
@@ -134,4 +134,5 @@ else:
 
 
 #  graph pour les axes dans la répartition par marque si réserrve
+
 
