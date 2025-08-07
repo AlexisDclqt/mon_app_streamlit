@@ -61,6 +61,7 @@ st.sidebar.subheader("📊 Graphiques")
 if st.sidebar.checkbox("Voir Répartition emp par AXE", True):
     vis_type = st.sidebar.selectbox('Type de visualisation', ['Histogram des AXE', 'Pie Chart des AXE'], key='axe_vis')
     st.markdown("### 📦 Répartition des emplacements par Axe ​​⏬ ")
+    st.info(f"Total d'emplacements Picking : {df_axe["Nombre d\'emplacements"].sum()}")
     fig = px.bar(df_axe, x='AXE_PRODUIT', y="Nombre d'emplacements", color='AXE_PRODUIT', height=500, text = "Nombre d'emplacements") if vis_type == 'Histogram des AXE' else px.pie(df_axe, values="Nombre d'emplacements", names='AXE_PRODUIT')
     st.plotly_chart(fig)
     st.markdown("----------------------------------------------------------------------------------------------------------")
@@ -70,6 +71,7 @@ if st.sidebar.checkbox("Voir Répartition emp par AXE", True):
 if st.sidebar.checkbox("Voir Répartition réserve par AXE", True):
     vis_type_r = st.sidebar.selectbox('Type de visualisation (Réserves)', ['Histogram des Réserves', 'Pie Chart des Réserves'], key='res_vis')
     st.markdown("### 🗃️ Répartition des Réserves par Axe ​​⏬ ")
+    st.info(f"Total d'emplacements Réserves : {df_axe_r["Nombre d\'emplacements"].sum()}")
     fig_r = px.bar(df_axe_r, x='AXE_PRODUIT', y="Nombre d'emplacements", color='AXE_PRODUIT', height=500, text = "Nombre d'emplacements") if vis_type_r == 'Histogram des Réserves' else px.pie(df_axe_r, values="Nombre d'emplacements", names='AXE_PRODUIT')
     st.plotly_chart(fig_r)
     st.markdown("----------------------------------------------------------------------------------------------------------")
@@ -77,7 +79,7 @@ if st.sidebar.checkbox("Voir Répartition réserve par AXE", True):
 
 if st.sidebar.checkbox("Voir la répartition des classse ABC par AXE", True):
     st.markdown("### Répartition des ABC ​​⏬")
-    st.write(f"📦 Total d'articles au picking dans le dépôt : {df_abc["Nombre d\'article"].sum()}")
+    st.info(f"📦 Total d'articles au picking dans le dépôt : {df_abc["Nombre d\'article"].sum()}")
     fig_abc = px.bar(df_abc, x = 'AXE_PRODUIT', y = "Nombre d'article", color = 'ABC_ROT',text_auto = True, height = 700, facet_col = "ABC_ROT")
     st.plotly_chart(fig_abc)
     
@@ -90,7 +92,6 @@ nb = df_abc["Nombre d'article"].sum()
     
 st.sidebar.metric(label="Nombre codpro", value= f'{nb} articles')
     
-st.sidebar.write(df_abc)
     
     
     
@@ -118,4 +119,5 @@ st.sidebar.write(df_abc)
     
     
     
+
 
