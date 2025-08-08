@@ -45,7 +45,7 @@ if st.sidebar.checkbox('📁 Gestion des Réserves', True, key = 'CB1'):
     st.subheader('📁 Gestion des Réserves ​​⏬')
     
     df_filtered = df_with_reserve.copy()
-    df_filtered = df_filtered.set_index(df_filtered.columns[0])
+    #df_filtered = df_filtered.set_index(df_filtered.columns[0])
     
     axes_selectionnes = st.session_state.get("axes_res", "")
     code_shop = st.session_state.get("code_res", "")
@@ -117,7 +117,7 @@ if st.sidebar.checkbox('📂 Gestion des Produits (Hors Réserves)', True, key =
 if st.sidebar.checkbox('📂 Gestion des CODBLO', True, key = "CB3"):
     st.subheader('📂 Gestion des CODBLO ​​⏬ ')
     df_filtered4 = data[(data['CODBLO'].isin(['NEX','FP','OCC','PAS','DYN']))] 
-    df_filtered4 = df_filtered4.set_index(df_filtered4.columns[0])
+    #df_filtered4 = df_filtered4.set_index(df_filtered4.columns[0])
     
     codblo = st.session_state.get("codblo", "")
     zone3 = st.session_state.get("zone_sdv1", "")
@@ -138,6 +138,7 @@ if st.sidebar.checkbox('📂 Gestion des CODBLO', True, key = "CB3"):
     st.markdown("### Résultats de la recherche des CODBLO")
     st.dataframe(df_filtered4, use_container_width=True, height=600)
     st.markdown("----------------------------------------------------------------------------------------------------------")
+
 
 
 
