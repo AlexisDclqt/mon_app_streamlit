@@ -125,7 +125,9 @@ if show_table:
                     'P','Q','R','S',
                     'T','U','V','W',
                     'X','Y','Z','NEX',
-                    'DYN','FP','OCC','PAS'] 
+                    'DYN','FP','OCC','PAS',
+                    'PARFUM','SOIN','MAQUILLAGE','S+',
+                    'XDATE','COFFRET'] 
     
     valeurs = grille.values.flatten()
     valeurs_utiles = [v.strip() for v in valeurs if isinstance(v, str) and v != "N/C"]
@@ -176,6 +178,7 @@ if show_table:
 
 else:
     st.info("✅ Grille masquée. Cochez la case dans la sidebar pour l'afficher.")
+
 
 
 
