@@ -124,3 +124,7 @@ st.markdown("-------------------------------------------------------------------
 
 
 
+nb_emp_fp = df_FP["Nombre d'emplacements FP"].sum()
+
+st.sidebar.metric(label="Nombre d'emplacements FP dans le dépot :", value= f'{nb_emp_fp} Emplacements FP')
+
