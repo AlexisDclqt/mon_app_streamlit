@@ -94,5 +94,6 @@ if st.sidebar.checkbox("Voir la répartition des classse ABC par AXE", True):
 
 
 nb = df_abc["Nombre d'article"].sum()   
-st.sidebar.metric(label="Nombre codpro", value= f'{nb} articles')
+st.sidebar.metric(label="Nombre codpro", value= f'{nb} articles', border = True)
     
+
