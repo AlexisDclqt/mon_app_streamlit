@@ -80,7 +80,7 @@ if st.sidebar.checkbox('📂 Gestion des Produits (Hors Réserves)', True, key =
 
     
     df_filtered1 = df_without_reserve.copy()
-    df_filtered1 = df_filtered1.set_index(df_filtered1.columns[0])
+    #df_filtered1 = df_filtered1.set_index(df_filtered1.columns[0])
     
     axes_selectionnes1 = st.session_state.get("axes_sdv","")
     code_shop1 = st.session_state.get("code_sdv", "")
@@ -138,6 +138,7 @@ if st.sidebar.checkbox('📂 Gestion des CODBLO', True, key = "CB3"):
     st.markdown("### Résultats de la recherche des CODBLO")
     st.dataframe(df_filtered4, use_container_width=True, height=600)
     st.markdown("----------------------------------------------------------------------------------------------------------")
+
 
 
 
