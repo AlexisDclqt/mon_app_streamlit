@@ -126,6 +126,7 @@ st.markdown("-------------------------------------------------------------------
 
 nb_emp_fp = df_FP["Nombre d'emplacements FP"].sum()
 
-st.sidebar.markdown(f'{nb_emp_fp} Emplacements FP')
+st.sidebar.markdown(f'###{nb_emp_fp} Emplacements FP')
+
 
 
