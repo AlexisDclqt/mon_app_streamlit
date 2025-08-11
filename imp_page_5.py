@@ -79,7 +79,7 @@ if st.sidebar.checkbox("Voir Répartition emp par AXE", True):
     vis_type = st.sidebar.selectbox('Type de visualisation', ['Histogramme des AXE', 'Diagramme Circulaire des AXE'], key='axe_vis')
     st.markdown("### 📦 Répartition des emplacements par Axe ​​⏬ ")
     st.info(f"📦 Total d'emplacements Picking : {df_axe["Nombre d\'emplacements"].sum():,}")
-    fig = px.bar(df_axe, x='AXE_PRODUIT', y="Nombre d'emplacements", color='AXE_PRODUIT', height=500, text = "Nombre d'emplacements", hover_data = 'UVC_STOCK') if vis_type == 'Histogramme des AXE' else px.pie(df_axe, values="Nombre d'emplacements", names='AXE_PRODUIT')
+    fig = px.bar(df_axe, x='AXE_PRODUIT', y="Nombre d'emplacements", color='AXE_PRODUIT', height=500, text = "Nombre d'emplacements", hover_name = 'UVC_STOCK') if vis_type == 'Histogramme des AXE' else px.pie(df_axe, values="Nombre d'emplacements", names='AXE_PRODUIT')
     st.plotly_chart(fig)
     st.markdown("----------------------------------------------------------------------------------------------------------")
 
@@ -103,6 +103,7 @@ if st.sidebar.checkbox("Voir la répartition des classse ABC par AXE", True):
 
 
     
+
 
 
 
