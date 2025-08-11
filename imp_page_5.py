@@ -94,11 +94,12 @@ if st.sidebar.checkbox("Voir la répartition des classse ABC par AXE", True):
     st.plotly_chart(fig_abc)
     
 
-uvc = data['UVC_STOCK'].sum()
+uvc = data[data['TYPE'] !='Réserve') & (data['UVC_STOCK'].sum())
 nb = df_abc["Nombre d'article"].sum()
 st.sidebar.metric(label="Nombre codpro", value= f'{nb} articles', border = True)
 st.sidebar.metric(label="Nombre d'UVC au PICKING", value= f'{uvc} UVC', border = True)
     
+
 
 
 
