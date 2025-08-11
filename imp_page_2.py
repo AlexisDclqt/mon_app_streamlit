@@ -106,7 +106,7 @@ if st.sidebar.checkbox('📂 Gestion des Produits (Hors Réserves)', True, key =
         df_filtered1 = df_filtered1[df_filtered1['Classement Marque A-Z'].astype(str).str.startswith(marque.upper())]
     if df_filtered1.empty:
         st.error("❌ CETTE ALLEE EST UNE RESERVE")
-     if df_filtered1['UVC_Restant'] == 0:
+    if df_filtered1['UVC_Restant'] == 0:
         return 'color : #FF6347'
 
     st.markdown("### Résultats de la recherche (Hors Réserves)")
@@ -140,6 +140,7 @@ if st.sidebar.checkbox('📂 Gestion des CODBLO', True, key = "CB3"):
     st.markdown("### Résultats de la recherche des CODBLO")
     st.dataframe(df_filtered4, use_container_width=True, height=600)
     st.markdown("----------------------------------------------------------------------------------------------------------")
+
 
 
 
