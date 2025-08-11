@@ -109,8 +109,8 @@ if st.sidebar.checkbox('📂 Gestion des Produits (Hors Réserves)', True, key =
 
 
     def color_uvc(colonne):
-    return ["background-color: #FF69B4; color: white" if val == 0 else ""
-        for val in colonne]
+        return ["background-color: #FF69B4; color: white" if val == 0 else ""
+                for val in colonne]
     st.dataframe(
     df_filtered1.style.apply(color_uvc, subset=["UVC_RESTANT"])
     )
@@ -146,6 +146,7 @@ if st.sidebar.checkbox('📂 Gestion des CODBLO', True, key = "CB3"):
     st.markdown("### Résultats de la recherche des CODBLO")
     st.dataframe(df_filtered4, use_container_width=True, height=600)
     st.markdown("----------------------------------------------------------------------------------------------------------")
+
 
 
 
