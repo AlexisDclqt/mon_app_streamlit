@@ -81,7 +81,7 @@ if st.sidebar.checkbox("Voir Répartition emp par AXE", True):
 if st.sidebar.checkbox("Voir Répartition réserve par AXE", True):
     vis_type_r = st.sidebar.selectbox('Type de visualisation (Réserves)', ['Histogramme des Réserves', 'Diagramme Circulaire des Réserves'], key='res_vis')
     st.markdown("### 🗃️ Répartition des Réserves par Axe ​​⏬ ")
-    st.info(f"📦 Total d'emplacements Réserves : {df_axe_r["Nombre d\'emplacements Réserves"].sum()}")
+    st.info(f"📦 Total d'emplacements Réserves : {df_axe_r["Nombre d\'emplacements Réserves"].sum():,}")
     fig_r = px.bar(df_axe_r, x='AXE_PRODUIT', y="Nombre d'emplacements Réserves", color='AXE_PRODUIT', height=500, text = "Nombre d'emplacements Réserves") if vis_type_r == 'Histogramme des Réserves' else px.pie(df_axe_r, values="Nombre d'emplacements Réserves", names='AXE_PRODUIT')
     st.plotly_chart(fig_r)
     st.markdown("----------------------------------------------------------------------------------------------------------")
@@ -89,7 +89,7 @@ if st.sidebar.checkbox("Voir Répartition réserve par AXE", True):
 
 if st.sidebar.checkbox("Voir la répartition des classse ABC par AXE", True):
     st.markdown("### Répartition des ABC ​​⏬")
-    st.info(f"📦 Total d'articles au picking dans le dépôt : {df_abc["Nombre d\'article"].sum()}")
+    st.info(f"📦 Total d'articles au picking dans le dépôt : {df_abc["Nombre d\'article"].sum():,}")
     fig_abc = px.bar(df_abc, x = 'ABC_ROT', y = "Nombre d'article", color = 'AXE_PRODUIT',text_auto = True, height = 500,width = 1600, facet_col = "AXE_PRODUIT")#pattern_shape= "AXE_PRODUIT", pattern_shape_sequence = [".","x","+","-"])
     st.plotly_chart(fig_abc)
     
@@ -100,6 +100,7 @@ nb = df_abc["Nombre d'article"].sum()
 st.sidebar.metric(label="Nombre codpro", value= f'{nb:,} articles', border = True)
 st.sidebar.metric(label="Nombre d'UVC au PICKING", value= f'{uvc:,} UVC', border = True)
     
+
 
 
 
