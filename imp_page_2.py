@@ -18,6 +18,9 @@ def load_data():
     data['Classement Marque A-Z'] = data['Classement Marque A-Z'].astype(str).str.strip().str.upper()
     data[['ABC_ROT','TYPE']] =  data[['ABC_ROT','TYPE']].replace(' ','NAN')
     data['ABC_ROT'] = data['ABC_ROT'].astype(str).str.upper()
+    data['UVC_STOCK'] = pd.to_numeric(data['UVC_STOCK'], errors = 'coerce').astype('Int64')
+    data['UVC_ENCOURS'] = pd.to_numeric(data['UVC_ENCOURS'], errors = 'coerce').astype('Int64')
+    data['UVC_RESTANT'] = pd.to_numeric(data['UVC_RESTANT'], errors = 'coerce').astype('Int64')
 
     return data
 
@@ -139,6 +142,7 @@ if st.sidebar.checkbox('📂 Gestion des CODBLO', True, key = "CB3"):
     st.markdown("### Résultats de la recherche des CODBLO")
     st.dataframe(df_filtered4, use_container_width=True, height=600)
     st.markdown("----------------------------------------------------------------------------------------------------------")
+
 
 
 
