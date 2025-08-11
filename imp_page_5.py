@@ -96,10 +96,14 @@ if st.sidebar.checkbox("Voir la répartition des classse ABC par AXE", True):
 
 uvc = data[data['TYPE'] !='Réserve']
 uvc = uvc['UVC_STOCK'].sum()
+uvc_en = data[data['TYPE'] !='Réserve']
+uvc_en = uvc_en['UVC_ENCOURS'].sum()
 nb = df_abc["Nombre d'article"].sum()
 st.sidebar.metric(label="Nombre codpro", value= f'{nb:,} articles', border = True)
 st.sidebar.metric(label="Nombre d'UVC au PICKING", value= f'{uvc:,} UVC', border = True)
+st.sidebar.metric(label="Nombre d'UVC en ENCOURS", value= f'{uvc_en:,} UVC', border = True)
     
+
 
 
 
