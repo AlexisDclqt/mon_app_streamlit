@@ -118,12 +118,11 @@ if st.sidebar.checkbox('📂 Gestion des Produits (Hors Réserves)', True, key =
         return styles
 
     
-    )
+    
 
     st.markdown("### Résultats de la recherche (Hors Réserves)")
     st.dataframe(df_filtered1, use_container_width=True, height=600)
-    st.dataframe(
-    df_filtered1.style.apply(color_uvc, subset=["UVC_RESTANT"])
+    st.dataframe(df_filtered1.style.apply(color_uvc, subset=["UVC_RESTANT"])
     st.markdown("----------------------------------------------------------------------------------------------------------")
     
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -153,6 +152,7 @@ if st.sidebar.checkbox('📂 Gestion des CODBLO', True, key = "CB3"):
     st.markdown("### Résultats de la recherche des CODBLO")
     st.dataframe(df_filtered4, use_container_width=True, height=600)
     st.markdown("----------------------------------------------------------------------------------------------------------")
+
 
 
 
