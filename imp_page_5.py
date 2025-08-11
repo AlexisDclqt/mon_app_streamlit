@@ -71,7 +71,7 @@ st.sidebar.subheader("📊 Graphiques")
 if st.sidebar.checkbox("Voir Répartition emp par AXE", True):
     vis_type = st.sidebar.selectbox('Type de visualisation', ['Histogramme des AXE', 'Diagramme Circulaire des AXE'], key='axe_vis')
     st.markdown("### 📦 Répartition des emplacements par Axe ​​⏬ ")
-    st.info(f"📦 Total d'emplacements Picking : {df_axe["Nombre d\'emplacements"].sum()}")
+    st.info(f"📦 Total d'emplacements Picking : {df_axe["Nombre d\'emplacements"].sum():,}")
     fig = px.bar(df_axe, x='AXE_PRODUIT', y="Nombre d'emplacements", color='AXE_PRODUIT', height=500, text = "Nombre d'emplacements") if vis_type == 'Histogramme des AXE' else px.pie(df_axe, values="Nombre d'emplacements", names='AXE_PRODUIT')
     st.plotly_chart(fig)
     st.markdown("----------------------------------------------------------------------------------------------------------")
@@ -100,6 +100,7 @@ nb = df_abc["Nombre d'article"].sum()
 st.sidebar.metric(label="Nombre codpro", value= f'{nb:,} articles', border = True)
 st.sidebar.metric(label="Nombre d'UVC au PICKING", value= f'{uvc:,} UVC', border = True)
     
+
 
 
 
