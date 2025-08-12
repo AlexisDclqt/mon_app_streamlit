@@ -70,12 +70,11 @@ top_enc_code = df_prep.groupby('AXE_PRODUIT')['CODPRO'].size().reset_index(name 
 top_mrg = top_enc_code.merge(top_enc_uvc, on = 'AXE_PRODUIT')
 
 fig_enc = px.pie(top_mrg, values= "Nombre d'UVC en Encours", names = 'AXE_PRODUIT', hover_data= "Nombre de Code en Encours")
-st.sidebar.plotly_chart(fig_enc)
-
 
 if st.sidebar.button("♻️ Recharger les données"):
     st.cache_data.clear()
     
+st.sidebar.plotly_chart(fig_enc)    
     
 st.title("Encours de préparation prévus :")
 
@@ -108,6 +107,7 @@ st.write(df_prep)
 
 
  
+
 
 
 
