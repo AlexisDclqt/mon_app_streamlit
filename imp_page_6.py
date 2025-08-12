@@ -73,7 +73,8 @@ fig_enc = px.pie(top_mrg, values= "Nombre d'UVC en Encours", names = 'AXE_PRODUI
 
 if st.sidebar.button("♻️ Recharger les données"):
     st.cache_data.clear()
-    
+
+st.sidebar.markdown("Répartition des prélèvements par Axe")
 st.sidebar.plotly_chart(fig_enc)    
     
 st.title("Encours de préparation prévus :")
@@ -107,6 +108,7 @@ st.write(df_prep)
 
 
  
+
 
 
 
