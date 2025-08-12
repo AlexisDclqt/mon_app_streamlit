@@ -30,9 +30,6 @@ def check_password():
         
 if check_password():
     st.set_page_config(layout="wide")
-    
-   st.set_page_config(layout="wide")
-
 
 page_1 = st.Page("imp_page_1.py", title= "1. 🤖Implantation Intelligente")
 page_2 = st.Page("imp_page_2.py", title= "2. 📦📂Gestion des Produits")
@@ -55,6 +52,7 @@ preserve_session_keys("LM","axe_imp","axes_res","code_res","zone_res","allee_res
 
 
 pg.run()
+
 
 
 
