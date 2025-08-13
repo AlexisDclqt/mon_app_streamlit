@@ -62,6 +62,7 @@ df_abc = df_abc.groupby(['AXE_PRODUIT','ABC_ROT'])['CODPRO'].nunique().reset_ind
 
 
 df_prep = data[['CODPRO','AXE_PRODUIT','ZONSTS','ALLSTS','DPLSTS','NIVSTS','UVC_STOCK','UVC_ENCOURS','UVC_RESTANT']]
+df_prep = df_prep[df_prep['AXE_PRODUIT'] != ""]
 df_prep = df_prep[df_prep['UVC_ENCOURS'] !=0].sort_values(by = 'UVC_ENCOURS',ascending = False)
 
 top_enc_uvc = df_prep.groupby('AXE_PRODUIT')['UVC_ENCOURS'].sum().reset_index(name = "Nombre d'UVC en Encours").sort_values(by = "Nombre d'UVC en Encours", ascending = False)
@@ -110,6 +111,7 @@ st.write(prep_style)
 
 
  
+
 
 
 
