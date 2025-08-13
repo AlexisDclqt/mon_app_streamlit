@@ -90,7 +90,7 @@ if axes_selectionnes3:
 def color(ligne):
     if ligne['UVC_RESTANT'] == 0:
         return ["background-color: red; color: white; font-weight: bold"] * len(ligne)
-     else:
+    else:
         return [""] * len(ligne)
 #     elif 1 <= ligne['UVC_RESTANT'] <= 150:
 #         return ["background-color: orange; color: white; font-weight: bold"] * len(ligne)
@@ -110,6 +110,7 @@ st.write(prep_style)
 
 
  
+
 
 
 
