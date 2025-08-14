@@ -88,11 +88,11 @@ if axes_selectionnes3:
     df_prep = df_prep[df_prep['AXE_PRODUIT'].isin(axes_selectionnes3)]
     
 
-def color(ligne):
-    if ligne['UVC_RESTANT'] == 0:
-        return ["background-color: red; color: white; font-weight: bold"] * len(ligne)
-    else:
-        return [""] * len(ligne)
+#def color(ligne):
+    #if ligne['UVC_RESTANT'] == 0:
+        #return ["background-color: red; color: white; font-weight: bold"] * len(ligne)
+   # else:
+       # return [""] * len(ligne)
 #     elif 1 <= ligne['UVC_RESTANT'] <= 150:
 #         return ["background-color: orange; color: white; font-weight: bold"] * len(ligne)
 #     elif 151 <= ligne['UVC_RESTANT'] <= 500:
@@ -103,14 +103,15 @@ def color(ligne):
     
 # df_prep = df_prep.reset_index(drop=True)
 
-prep_style = df_prep.style.apply(color, axis=1)
+#prep_style = df_prep.style.apply(color, axis=1)
 
-st.write(prep_style)
+st.write(df_prep)
 
 
 
 
  
+
 
 
 
