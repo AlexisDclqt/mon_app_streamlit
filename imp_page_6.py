@@ -81,11 +81,15 @@ st.sidebar.plotly_chart(fig_enc)
 st.title("Encours de préparation prévus :")
 
 axes_selectionnes3 = st.session_state.get("axes_prep",[])
-axes_selectionnes3 = st.multiselect("Choisir un ou plusieurs axes de préparation", options=df_prep['AXE_PRODUIT'].unique(), key='axes_prep')
+code_abc = st.session_state.get("code_abc",[])
 
+axes_selectionnes3 = st.multiselect("Choisir un ou plusieurs axes de préparation", options=df_prep['AXE_PRODUIT'].unique(), key='axes_prep')
+code_abc = st.text_input("Renseigner un Code Shop: ", key = "code_abc")
 
 if axes_selectionnes3:
     df_prep = df_prep[df_prep['AXE_PRODUIT'].isin(axes_selectionnes3)]
+if code_abc:
+    df_prep = df_prep[df_prep['CODPRO'].str.contains(code_abc, case=False, na=False)]
     
 
 #def color(ligne):
@@ -111,6 +115,7 @@ st.write(df_prep)
 
 
  
+
 
 
 
