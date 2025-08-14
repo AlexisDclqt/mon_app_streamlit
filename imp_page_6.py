@@ -48,16 +48,11 @@ df_axe_r2_mrg = df_axe_r.merge(df_axe_r2, on = "AXE_PRODUIT")
 
 
 df_FP = data[(data['CODBLO'] == 'FP') & (data['TYPE'] != 'Réserve')]
-
 df_FP = df_FP.groupby(['ALLSTS']).size().reset_index(name = "Nombre d'emplacements FP").sort_values(by = "ALLSTS", ascending = False)
 
 df_abc = data.copy()
-
 df_abc = df_abc[(df_abc['TYPE'] != "Réserve") & (df_abc['CODPRO'] != "") & (df_abc['ABC_ROT'] != "NAN")]
-
 df_abc = df_abc[['CODPRO','ABC_ROT','AXE_PRODUIT']]
-
-
 df_abc = df_abc.groupby(['AXE_PRODUIT','ABC_ROT'])['CODPRO'].nunique().reset_index(name = "Nombre d'article")
 
 
@@ -71,12 +66,12 @@ top_enc_code = df_prep.groupby('AXE_PRODUIT')['CODPRO'].size().reset_index(name 
 top_mrg = top_enc_code.merge(top_enc_uvc, on = 'AXE_PRODUIT')
 
 fig_enc = px.pie(top_mrg, values= "Nombre d'UVC en Encours", names = 'AXE_PRODUIT', hover_data= "Nombre de Code en Encours")
+st.sidebar.plotly_chart(fig_enc)
+
 
 if st.sidebar.button("♻️ Recharger les données"):
     st.cache_data.clear()
-
-st.sidebar.markdown("Répartition des prélèvements par Axe")
-st.sidebar.plotly_chart(fig_enc)    
+    
     
 st.title("Encours de préparation prévus :")
 
@@ -117,15 +112,6 @@ st.write(df_prep)
 
 
 
+
  
-
-
-
-
-
-
-
-
-
-
 
