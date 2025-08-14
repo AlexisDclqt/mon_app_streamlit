@@ -55,7 +55,7 @@ df_abc = data.copy()
 df_abc = df_abc[(df_abc['TYPE'] != "Réserve") & (df_abc['CODPRO'] != "") & (df_abc['ABC_ROT'] != "NAN")]
 
 df_abc = df_abc[['CODPRO','ABC_ROT','AXE_PRODUIT']]
-
+df_abc = df_abc[df_abc['AXE_PRODUIT'] != ""]
 
 df_abc = df_abc.groupby(['AXE_PRODUIT','ABC_ROT'])['CODPRO'].nunique().reset_index(name = "Nombre d'article")
 
@@ -93,6 +93,11 @@ if st.sidebar.checkbox("Voir Répartition réserve par AXE", True):
     st.plotly_chart(fig_r)
     st.markdown("----------------------------------------------------------------------------------------------------------")
     
+classe_order = ['A','B','C','D','R']
+
+df_abc['ABC_ROT'] = pd.Categorical(df_abc['ABC_ROT'], categories= classe_order, ordered= True)
+df_abc = pd.DataFrame(df_abc)
+
 
 if st.sidebar.checkbox("Voir la répartition des classse ABC par AXE", True):
     st.markdown("### Répartition des ABC ​​⏬")
@@ -103,6 +108,7 @@ if st.sidebar.checkbox("Voir la répartition des classse ABC par AXE", True):
 
 
     
+
 
 
 
