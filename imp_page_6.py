@@ -77,7 +77,7 @@ st.title("Encours de préparation prévus :")
 
 axes_selectionnes3 = st.session_state.get("axes_prep",[])
 code_abc = st.session_state.get("code_abc",[])
-nb_enc = st.session_state.get("nb_uvc",[])
+nb_enc = st.session_state.get("nb_uvc","")
 
 axes_selectionnes3 = st.multiselect("Choisir un ou plusieurs axes de préparation", options=df_prep['AXE_PRODUIT'].unique(), key='axes_prep')
 code_abc = st.text_input("Renseigner un Code Shop: ", key = "code_abc")
@@ -114,4 +114,5 @@ st.write(df_prep)
 
 
  
+
 
