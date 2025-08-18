@@ -31,6 +31,9 @@ def load_data():
 data = load_data()
 
 
+data = load_data()
+
+
 df_with_reserve = data[(data['TYPE'] == 'Réserve') & (data['CODPRO'] != "") & data['CODBLO'].isin(['NAN']) & (data["AXE_PRODUIT"] != "")]
 
 df_without_reserve = data[(data['TYPE'] != 'Réserve') & (data['CODPRO'] != "") & data['CODBLO'].isin(['NAN']) & (data["AXE_PRODUIT"] != "")]
@@ -65,47 +68,42 @@ top_enc_code = df_prep.groupby('AXE_PRODUIT')['CODPRO'].size().reset_index(name 
 
 top_mrg = top_enc_code.merge(top_enc_uvc, on = 'AXE_PRODUIT')
 
+if st.sidebar.button("♻️ Recharger les données"):
+    st.cache_data.clear()
+
 fig_enc = px.pie(top_mrg, values= "Nombre d'UVC en Encours", names = 'AXE_PRODUIT', hover_data= "Nombre de Code en Encours")
 st.sidebar.plotly_chart(fig_enc)
 
-
-if st.sidebar.button("♻️ Recharger les données"):
-    st.cache_data.clear()
-    
     
 st.title("Encours de préparation prévus :")
 
 axes_selectionnes3 = st.session_state.get("axes_prep",[])
-code_abc = st.session_state.get("code_abc",[])
+code_prep = st.session_state.get("code_prep",[])
 nb_enc = st.session_state.get("nb_uvc","")
 
-axes_selectionnes3 = st.multiselect("Choisir un ou plusieurs axes de préparation", options=df_prep['AXE_PRODUIT'].unique(), key='axes_prep')
-code_abc = st.text_input("Renseigner un Code Shop: ", key = "code_abc")
-nb_enc = st.slider("Nombre d'UVC en ENCOURS",min_value= min(df_prep['UVC_ENCOURS']),max_value= max(df_prep['UVC_ENCOURS']), step= 100, key = "nb_uvc")
+axes_selectionnes3 = st.multiselect("Choisir un ou plusieurs axes de préparation", 
+                                    options=df_prep['AXE_PRODUIT'].unique(), 
+                                    key='axes_prep')
+
+code_prep = st.text_input("Renseigner un Code Shop: ", 
+                          key = "code_prep")
+
+nb_enc = st.slider("Nombre d'UVC en ENCOURS",
+                   min_value= int(df_prep['UVC_ENCOURS'].min()),
+                   max_value= int(df_prep['UVC_ENCOURS'].max()),
+                   value=(int(df_prep['UVC_ENCOURS'].min()), int(df_prep['UVC_ENCOURS'].max())),
+                   step= 50,
+                   key = "nb_uvc")
 
 
 if axes_selectionnes3:
     df_prep = df_prep[df_prep['AXE_PRODUIT'].isin(axes_selectionnes3)]
-if code_abc:
-    df_prep = df_prep[df_prep['CODPRO'].str.contains(code_abc, case=False, na=False)]
+if code_prep:
+    df_prep = df_prep[df_prep['CODPRO'].str.contains(code_prep, case=False, na=False)]
 if nb_enc:
     df_prep = df_prep[df_prep['UVC_ENCOURS'].between(nb_enc[0], nb_enc[1])]
     
 
-# def color(ligne):
-#     if ligne['UVC_RESTANT'] == 0:
-#         return ["background-color: red; color: white; font-weight: bold"] * len(ligne)
-#     elif 1 <= ligne['UVC_RESTANT'] <= 150:
-#         return ["background-color: orange; color: white; font-weight: bold"] * len(ligne)
-#     elif 151 <= ligne['UVC_RESTANT'] <= 500:
-#         return ["background-color: salmon; color: white; font-weight: bold"] * len(ligne)
-#     else:
-#         return [""] * len(ligne)
-    
-    
-# df_prep = df_prep.reset_index(drop=True)
-
-# prep_style = df_prep.style.apply(color, axis=1)
 
 st.write(df_prep)
 
@@ -114,5 +112,6 @@ st.write(df_prep)
 
 
  
+
 
 
