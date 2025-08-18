@@ -31,9 +31,6 @@ def load_data():
 data = load_data()
 
 
-data = load_data()
-
-
 df_with_reserve = data[(data['TYPE'] == 'Réserve') & (data['CODPRO'] != "") & data['CODBLO'].isin(['NAN']) & (data["AXE_PRODUIT"] != "")]
 
 df_without_reserve = data[(data['TYPE'] != 'Réserve') & (data['CODPRO'] != "") & data['CODBLO'].isin(['NAN']) & (data["AXE_PRODUIT"] != "")]
@@ -112,6 +109,7 @@ st.write(df_prep)
 
 
  
+
 
 
 
