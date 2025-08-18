@@ -4,7 +4,7 @@ import plotly.express as px
 
 
 
-DATA = r"C:\Users\adecloquement\Desktop\VAE\Certif et revision\Projet_ST\imp\imp.xlsx"
+DATA = "imp.xlsx"
 
 
 @st.cache_data(persist=True)
@@ -155,5 +155,6 @@ st.write(df_prep)
     
     
 # df_prep = df_prep.reset_index(drop=True)
+
 
 # prep_style = df_prep.style.apply(color, axis=1)
