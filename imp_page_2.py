@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 
-DATA = r"C:\Users\adecloquement\Desktop\VAE\Certif et revision\Projet_ST\imp\imp.xlsx"
+DATA = "imp.xlsx"
 
 @st.cache_data(persist=True)
 
@@ -150,6 +150,7 @@ if st.sidebar.checkbox('📂 Gestion des CODBLO', True, key = "CB3"):
     st.markdown("### Résultats de la recherche des CODBLO")
     st.dataframe(df_filtered4, use_container_width=True, height=600)
     st.markdown("----------------------------------------------------------------------------------------------------------")
+
 
 
 
