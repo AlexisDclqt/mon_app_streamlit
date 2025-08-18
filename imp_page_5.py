@@ -3,8 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 
-
-DATA = r"C:\Users\adecloquement\Desktop\VAE\Certif et revision\Projet_ST\imp\imp.xlsx"
+DATA = "imp.xlsx"
 
 
 @st.cache_data(persist=True)
@@ -166,3 +165,4 @@ if st.sidebar.checkbox("Voir la répartition des classse ABC par AXE", True):
     
     
     
+
