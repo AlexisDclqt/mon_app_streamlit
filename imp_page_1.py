@@ -4,7 +4,7 @@ from difflib import get_close_matches
 
 
 
-DATA = r"C:\Users\adecloquement\Desktop\VAE\Certif et revision\Projet_ST\imp\imp.xlsx"
+DATA = "imp.xlsx"
 
 
 @st.cache_data(persist=True)
@@ -129,5 +129,6 @@ st.markdown("-------------------------------------------------------------------
 
 
 nb_emp_fp = df_FP["Nombre d'emplacements FP"].sum()
+
 
 st.sidebar.metric(label="Nombre d'emplacements FP dans le dépot :", value= f'{nb_emp_fp:,}', border = True)
