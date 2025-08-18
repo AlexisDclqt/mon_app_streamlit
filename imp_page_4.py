@@ -5,7 +5,7 @@ import seaborn as sns
 
 
 
-DATA = r"C:\Users\adecloquement\Desktop\VAE\Certif et revision\Projet_ST\imp\imp.xlsx"
+DATA = "imp.xlsx"
 
 
 @st.cache_data(persist=True)
@@ -130,6 +130,7 @@ if show_table1:
 
 else:
     st.info("✅ Grille masquée. Cochez la case dans la sidebar pour l'afficher.")
+
 
 
 
