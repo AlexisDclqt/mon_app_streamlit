@@ -97,13 +97,35 @@ top_enc_code = (df_prep.groupby('AXE_PRODUIT')['CODPRO'].size()
 
 top_mrg = top_enc_code.merge(top_enc_uvc, on = 'AXE_PRODUIT')
 
+nb_code = (data[(data['CODPRO'] != " ") &
+           (data['TYPE'] != 'Réserve')])
+
+nb_code = nb_code['CODPRO'].nunique()
+
+uvc = data[data['TYPE'] !='Réserve']
+uvc = uvc['UVC_STOCK'].sum()
+uvc_en = data[data['TYPE'] !='Réserve']
+uvc_en = uvc_en['UVC_ENCOURS'].sum()
+percent_uvc = round((uvc_en/uvc)*100,2)
+
+
+
 if st.sidebar.button("♻️ Recharger les données"):
     st.cache_data.clear()
 
+st.sidebar.metric(label = "Pourcentage D'UVC en Encours", value = f'{percent_uvc:,}%', border = True)
+
 fig_enc = px.pie(top_mrg, values= "Nombre d'UVC en Encours", names = 'AXE_PRODUIT', hover_data= "Nombre de Code en Encours")
+
 st.sidebar.plotly_chart(fig_enc)
 
-    
+
+st.sidebar.metric(label="Nombre codpro", value= f'{nb_code:,} articles', width = "content",border = True)
+st.sidebar.metric(label="Nombre d'UVC au PICKING", value= f'{uvc:,} UVC', border = True)
+st.sidebar.metric(label="Nombre d'UVC en ENCOURS", value= f'{uvc_en:,} UVC', border = True)
+
+
+
 st.title("Encours de préparation prévus :")
 
 axes_selectionnes3 = st.session_state.get("axes_prep",[])
@@ -136,25 +158,3 @@ if nb_enc:
 
 st.write(df_prep)
 
-
-
-
-
-
-
-
-# def color(ligne):
-#     if ligne['UVC_RESTANT'] == 0:
-#         return ["background-color: red; color: white; font-weight: bold"] * len(ligne)
-#     elif 1 <= ligne['UVC_RESTANT'] <= 150:
-#         return ["background-color: orange; color: white; font-weight: bold"] * len(ligne)
-#     elif 151 <= ligne['UVC_RESTANT'] <= 500:
-#         return ["background-color: salmon; color: white; font-weight: bold"] * len(ligne)
-#     else:
-#         return [""] * len(ligne)
-    
-    
-# df_prep = df_prep.reset_index(drop=True)
-
-
-# prep_style = df_prep.style.apply(color, axis=1)
