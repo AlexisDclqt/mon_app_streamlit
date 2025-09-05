@@ -48,8 +48,9 @@ if check_password():
                                 
                                 preserve_session_keys("LM","axe_imp","axes_res","code_res","zone_res","allee_res","axes_sdv","code_sdv","zone_sdv","allee_sdv",
                                                       "marque_sdv","codblo","zone_sdv1","allee_sdv1","zoneMarque",
-                                                         "allMarque","zoneABC","allABC","filtre_abc","CB1","CB2","CB3","CB4","CB5","axes_prep","code_prep","nb_uvc")
+                                                         "allMarque","zoneABC","allABC","filtre_abc","CB1","CB2","CB3","CB4","CB5","axes_prep","code_prep","nb_uvc","anapro")
         pg.run()
+
 
 
 
