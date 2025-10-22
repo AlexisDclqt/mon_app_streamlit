@@ -126,6 +126,14 @@ if show_table:
             return "background-color: #FF69B4; color: white"
         elif val == 'OCC':
             return "background-color: #FF6F61; color: white"
+        elif val == "PARFUM":
+            return "background-color: #FF6F61; color: white"
+        elif val == "SOIN":
+            return "background-color: #3498DB; color: white"
+        elif val == "MAQUILLAGE":
+            return "background-color: #FF69B4; color: white"
+        elif val == "S+":
+            return "background-color: #3498DB; color: white"
         elif isinstance(val, str) and val[0].upper() in couleur_par_lettre:
             color = couleur_par_lettre[val[0].upper()]
             return f"background-color: {color}; color: black"
@@ -191,4 +199,5 @@ if show_table:
 
 else:
     st.info("✅ Grille masquée. Cochez la case dans la sidebar pour l'afficher.")
+
 
