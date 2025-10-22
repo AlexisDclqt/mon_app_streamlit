@@ -116,7 +116,10 @@ if show_table:
     couleur_par_lettre = {lettres[i]: palette[i] for i in range(len(lettres))}
 
     def couleur(val):
-        if val == "N/C":
+        if isinstance(val, str) and val[0].upper() in couleur_par_lettre:
+            color = couleur_par_lettre[val[0].upper()]
+            return f"background-color: {color}; color: black"
+        elif val == "N/C":
             return "color: #888"
         elif val == 'DYN':
             return "background-color: #3498DB; color: white"
@@ -134,9 +137,6 @@ if show_table:
             return "background-color: #FF69B4; color: white"
         elif val == "S+":
             return "background-color: #3498DB; color: white"
-        elif isinstance(val, str) and val[0].upper() in couleur_par_lettre:
-            color = couleur_par_lettre[val[0].upper()]
-            return f"background-color: {color}; color: black"
         else:
             return ""
     
@@ -199,5 +199,6 @@ if show_table:
 
 else:
     st.info("✅ Grille masquée. Cochez la case dans la sidebar pour l'afficher.")
+
 
 
