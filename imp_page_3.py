@@ -111,7 +111,7 @@ if show_table:
             grille.at[dpl, niv] = valeur_cellule(data, zonsts_input, allsts_input, dpl, niv)
 
     grille = grille.T.sort_index(ascending=False)  
-    lettres = list("1ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    lettres = list("1ABCDEFGHIJKLMNOPQRSTUVWXYZSOINPARFUMMAQUILLAS+")
     palette = sns.color_palette("hls", len(lettres)).as_hex()
     couleur_par_lettre = {lettres[i]: palette[i] for i in range(len(lettres))}
 
@@ -199,6 +199,7 @@ if show_table:
 
 else:
     st.info("✅ Grille masquée. Cochez la case dans la sidebar pour l'afficher.")
+
 
 
 
